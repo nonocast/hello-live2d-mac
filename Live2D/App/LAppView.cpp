@@ -163,8 +163,7 @@ void LAppView::InitializeSprite()
     glfwGetWindowSize(LAppDelegate::GetInstance()->GetWindow(), &width, &height);
 
     LAppTextureManager* textureManager = LAppDelegate::GetInstance()->GetTextureManager();
-//    const string resourcesPath = LAppDelegate::GetInstance()->GetExecuteAbsolutePath() + ResourcesPath;
-    const string resourcesPath = ResourcesPath;
+    const string resourcesPath = LAppDelegate::GetInstance()->GetExecuteAbsolutePath() + ResourcesPath;
 
     string imageName = BackImageName;
     LAppTextureManager::TextureInfo* backgroundTexture = textureManager->CreateTextureFromPngFile(resourcesPath + imageName);

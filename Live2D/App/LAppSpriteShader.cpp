@@ -30,9 +30,11 @@ GLuint LAppSpriteShader::GetShaderId() const
 GLuint LAppSpriteShader::CreateShader(csmString executeAbsolutePath)
 {
     // シェーダーのパスの作成
-    Csm::csmString vertShaderFileName = ShaderPath;
+    Csm::csmString vertShaderFileName(executeAbsolutePath);
+    vertShaderFileName += ShaderPath;
     vertShaderFileName += VertShaderName;
-    Csm::csmString fragShaderFileName = ShaderPath;
+    Csm::csmString fragShaderFileName(executeAbsolutePath);
+    fragShaderFileName += ShaderPath;
     fragShaderFileName += FragShaderName;
 
     // 各シェーダーのコンパイル

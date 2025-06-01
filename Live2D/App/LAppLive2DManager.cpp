@@ -109,9 +109,8 @@ void LAppLive2DManager::SetUpModel()
     // フォルダはあるが同名の.model3.jsonが見つからなかった場合はリストに含めない。
     struct dirent *dirent;
 
-//    csmString crawlPath(LAppDelegate::GetInstance()->GetExecuteAbsolutePath().c_str());
-//    crawlPath += ResourcesPath;
-    csmString crawlPath = ResourcesPath;
+    csmString crawlPath(LAppDelegate::GetInstance()->GetExecuteAbsolutePath().c_str());
+    crawlPath += ResourcesPath;
 
     DIR *pDir = opendir(crawlPath.GetRawString());
     if (pDir == NULL) return;
@@ -258,9 +257,8 @@ void LAppLive2DManager::ChangeScene(Csm::csmInt32 index)
     // ディレクトリ名とmodel3.jsonの名前を一致させておくこと.
     const csmString& model = _modelDir[index];
 
-//    csmString modelPath(LAppDelegate::GetInstance()->GetExecuteAbsolutePath().c_str());
-//    modelPath += ResourcesPath;
-    csmString modelPath = ResourcesPath;
+    csmString modelPath(LAppDelegate::GetInstance()->GetExecuteAbsolutePath().c_str());
+    modelPath += ResourcesPath;
     modelPath += model;
     modelPath.Append(1, '/');
 

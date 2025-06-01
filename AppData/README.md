@@ -1,0 +1,1 @@
+将Models和Shaders两个目录复制到~/Documents/Live2DApp下

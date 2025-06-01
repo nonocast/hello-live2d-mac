@@ -8,6 +8,9 @@
 #include "LAppDelegate.hpp"
 #include <iostream>
 #include <sstream>
+#include <pwd.h>
+#include <unistd.h>
+#include <sys/types.h>
 #include <mach-o/dyld.h>
 #include <libgen.h>
 #include <GL/glew.h>
@@ -258,9 +261,23 @@ void LAppDelegate::OnMouseCallBack(GLFWwindow* window, double x, double y)
 
 void LAppDelegate::SetExecuteAbsolutePath()
 {
-    char path[1024];
-    uint32_t size = sizeof(path);
-    _NSGetExecutablePath(path, &size);
-    this->_executeAbsolutePath = dirname(path);
-    this->_executeAbsolutePath += "/";
+    
+//    char path[1024];
+//    uint32_t size = sizeof(path);
+//    _NSGetExecutablePath(path, &size);
+//    this->_executeAbsolutePath = dirname(path);
+//    this->_executeAbsolutePath += "/";
+    
+    
+    const char* homeDir = getenv("HOME");
+    if (!homeDir)
+    {
+        struct passwd* pw = getpwuid(getuid());
+        homeDir = pw->pw_dir;
+    }
+
+    this->_executeAbsolutePath = std::string(homeDir) + "/Documents/Live2DApp/";
+
+    // 使用 LAppPal::PrintLogLn 打印路径
+    LAppPal::PrintLogLn("Execute Path: %s", this->_executeAbsolutePath.c_str());
 }

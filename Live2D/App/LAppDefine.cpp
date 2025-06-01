@@ -28,7 +28,7 @@ namespace LAppDefine {
     const csmFloat32 ViewLogicalMaxTop = 2.0f;
 
     // 相対パス
-    const csmChar* ResourcesPath = "/Users/nonocast/Documents/Live2DApp/Models/";
+    const csmChar* ResourcesPath = "Models/";
 
     // モデルの後ろにある背景の画像ファイル
     const csmChar* BackImageName = "back_class_normal.png";
@@ -38,7 +38,7 @@ namespace LAppDefine {
     const csmChar* PowerImageName = "close.png";
 
     // シェーダー相対パス
-    const csmChar* ShaderPath = "/Users/nonocast/Documents/Live2DApp/Models/Shaders/Standard/";
+    const csmChar* ShaderPath = "Shaders/";
     // 頂点シェーダー
     const csmChar* VertShaderName = "VertSprite.vert";
     // フラグメントシェーダー
