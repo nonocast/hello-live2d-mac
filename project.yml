@@ -1,0 +1,49 @@
+name: Live2DApp
+options:
+  bundleIdPrefix: cn.nonocast
+  deploymentTarget:
+    macOS: "10.15"
+
+configs:
+  Debug:
+    buildSettings:
+      ENABLE_HARDENED_RUNTIME: YES
+  Release:
+    buildSettings:
+      ENABLE_HARDENED_RUNTIME: YES
+
+targets:
+  Live2DApp:
+    type: application
+    platform: macOS
+    deploymentTarget: "10.15"
+    info:
+      path: Info.plist
+    sources:
+      - path: main.mm
+      - path: Live2D
+    settings:
+      base:
+        HEADER_SEARCH_PATHS:
+          - $(SRCROOT)/Live2D/App/**
+          - $(SRCROOT)/Live2D/Core/**
+          - $(SRCROOT)/Live2D/Framework/**
+          - $(SRCROOT)/Live2D/ThirdParty/glfw/include
+          - $(SRCROOT)/Live2D/ThirdParty/glew/include
+          - $(SRCROOT)/Live2D/ThirdParty/stb/include
+        LIBRARY_SEARCH_PATHS:
+          - $(SRCROOT)/Live2D/Core
+        OTHER_LDFLAGS:
+          -lc++
+          -llive2dcubismcore
+          -lGLEW
+          -lglfw3
+          -framework OpenGL
+          -framework CoreGraphics
+          -framework CoreVideo
+          -framework IOKit
+          -framework AppKit
+        GCC_PREPROCESSOR_DEFINITIONS:
+          - CSM_TARGET_MAC_GL=1
+        CLANG_CXX_LANGUAGE_STANDARD: c++17
+        CLANG_CXX_LIBRARY: libc++
